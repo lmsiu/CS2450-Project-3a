@@ -26,6 +26,7 @@ public class Prototype extends Application{
         //for setting scene
         Scene scene = new Scene(topMenu);
         scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add("label.css");
 
         //showing scene
         primary.setScene(scene);
