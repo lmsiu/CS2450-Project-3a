@@ -2,6 +2,7 @@
     "java.project.sourcePaths": ["src"],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
+        //please leave and uncomment other's versions of the javafx line as you push and pull
         "C:/Users/lmsiu/Downloads/javafx-sdk-17.0.2/lib/**/*.jar"
     ]
 }
