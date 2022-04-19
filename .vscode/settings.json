@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "C:/Users/lmsiu/Downloads/javafx-sdk-17.0.2/lib/**/*.jar"
+    ]
+}
