@@ -4,10 +4,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 
 public class Prototype extends Application{
     public static void main(String[] args) throws Exception {
@@ -19,8 +21,17 @@ public class Prototype extends Application{
         
         //for top right
         Label insta = new Label("Instagram");
-        
-        HBox topMenu = new HBox(insta);
+        //to be changed, just for set up rn
+        Button create = new Button("+");
+        Button activity = new Button("<3");
+        Button dms = new Button(">");
+
+        HBox topButtons = new HBox(10, create, activity, dms);
+    //need to set paddings
+        HBox topMenu = new HBox(215, insta, topButtons);
+
+        //Image post = new Image();
+
 
 
         //for setting scene
