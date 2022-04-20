@@ -30,12 +30,27 @@ public class Prototype extends Application{
     //need to set paddings
         HBox topMenu = new HBox(215, insta, topButtons);
 
-        //Image post = new Image();
+        Image post1 = new Image("billy.jpg");
+        Image post2 = new Image("billythebronco.jpg");
+
+        ImageView post1iv = new ImageView(post1);
+        ImageView post2iv = new ImageView(post2);
+
+        //set padding
+        post1iv.setFitWidth(350);
+        post1iv.setFitHeight(350);
+        post1iv.setPreserveRatio(true);
+
+
+        HBox post = new HBox(post1iv);
+        post.setAlignment(Pos.CENTER);
+
+        VBox home = new VBox(topMenu, post);
 
 
 
         //for setting scene
-        Scene scene = new Scene(topMenu);
+        Scene scene = new Scene(home);
         scene.getStylesheets().add("style.css");
         scene.getStylesheets().add("label.css");
 
