@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -15,6 +16,18 @@ public class Prototype extends Application{
     public static void main(String[] args) throws Exception {
         launch(args);
     }
+
+    //bottom bar
+    Button home = new Button("[^]");
+    Button explore = new Button("-o");
+    Button reels = new Button("[>]");
+    Button shop = new Button("$$");
+    Button profile = new Button(">‿<");
+
+    HBox bottom = new HBox(50, home, explore, reels, shop, profile);
+
+    
+
 
     @Override
     public void start(Stage primary) throws Exception {
@@ -47,13 +60,7 @@ public class Prototype extends Application{
         Button send = new Button(">");
         Button save = new Button("[]");
 
-        //bottom bar
-        Button home = new Button("[^]");
-        Button explore = new Button("-o");
-        Button reels = new Button("[>]");
-        Button shop = new Button("$$");
-        Button profile = new Button(">‿<");
-
+        
         //scene2 activity
         activity.setOnAction(event -> {
             Label hi = new Label("scene2");
@@ -64,12 +71,7 @@ public class Prototype extends Application{
             primary.setScene(scene2);
         });
 
-        //scene3 profile
-        profile.setOnAction(event ->{
-            Scene scene3 = setSecene3();
-
-            primary.setScene(scene3);
-        });
+        
 
         //scene4 reels
         //scene5 reel full
@@ -101,7 +103,7 @@ public class Prototype extends Application{
 
         GridPane feed = new GridPane();
 
-        HBox bottom = new HBox(50, home, explore, reels, shop, profile);
+        
         bottom.setAlignment(Pos.BOTTOM_CENTER);
 
         feed.add(topMenu, 0, 0);
@@ -119,6 +121,13 @@ public class Prototype extends Application{
         //showing scene
         primary.setScene(scene);
 
+        //scene3 profile
+        profile.setOnAction(event ->{
+            Scene scene3 = setSecene3(primary, scene);
+
+            primary.setScene(scene3);
+        });
+
         //making the size
         primary.setHeight(700);
         primary.setWidth(400);
@@ -130,23 +139,59 @@ public class Prototype extends Application{
         
     }
 
-    private Scene setSecene3(){
+    private Scene setSecene3(Stage primary, Scene homeScene){
         Image addPeopleIcon = new Image("addPeople.png");
         ImageView addIcon = new ImageView(addPeopleIcon);
+
+        Image profilePic = new Image("billyProfilePic.jpg");
+        ImageView profilePiciv = new ImageView(profilePic);
         
         Button postCount = new Button("45");
         Button followerCount = new Button("32");
         Button followingCount = new Button("33");
 
+        Label posts = new Label("Posts");
+        Label followers = new Label("Followers");
+        Label Following = new Label("Following");
+
         Button editProfile = new Button("Edit Profile");
 
-        Button addFollowers = new Button("+>_<");
+        Button addFollowers = new Button("+(O)");
 
         Label name = new Label("Billy the Bronco");
         Label bio = new Label("Est. 1938");
 
+        name.setAlignment(Pos.CENTER_LEFT);
+        bio.setAlignment(Pos.CENTER_LEFT);
 
-        Scene scene3 = new Scene(name);
+        profilePiciv.setFitWidth(50);
+        profilePiciv.setFitHeight(50);
+        profilePiciv.setPreserveRatio(true);
+
+        HBox followersandadd = new HBox(followers, addFollowers);
+
+        GridPane profile =  new GridPane();
+        profile.setHgap(20);
+        profile.setVgap(10);
+        profile.add(postCount, 0, 0);
+        profile.add(followerCount, 1, 0);
+        profile.add(followingCount, 2, 0);
+        profile.add(posts, 0, 1);
+        profile.add(followersandadd, 1, 1);
+        profile.add(Following, 2, 1);
+
+        HBox profileTop = new HBox(50, profilePiciv, profile);
+        profileTop.setAlignment(Pos.TOP_LEFT);
+
+        VBox profilePage = new VBox(10, profileTop, name, bio, editProfile);
+
+        VBox profileWholePage = new VBox(400, profilePage, bottom);
+
+        home.setOnAction(event ->{
+            primary.setScene(homeScene);
+        });
+
+        Scene scene3 = new Scene(profileWholePage);
 
         return scene3;
     }
