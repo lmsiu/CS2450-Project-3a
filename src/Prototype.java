@@ -30,6 +30,22 @@ public class Prototype extends Application{
     //need to set paddings
         HBox topMenu = new HBox(215, insta, topButtons);
 
+
+        //Post
+        //poster info
+        Image profilePic = new Image("billyProfilePic.jpg");
+        ImageView profilePiciv = new ImageView(profilePic);
+        Label poster = new Label("billy.cpp");
+        Button postOptions = new Button("...");
+        profilePiciv.setFitWidth(50);
+        profilePiciv.setFitHeight(50);
+        profilePiciv.setPreserveRatio(true);
+
+        HBox posterInfo = new HBox(10, profilePiciv, poster);
+        HBox postOpt = new HBox(250, posterInfo, postOptions);
+
+
+        //image
         Image post1 = new Image("billy.jpg");
         Image post2 = new Image("billythebronco.jpg");
 
@@ -41,16 +57,31 @@ public class Prototype extends Application{
         post1iv.setFitHeight(350);
         post1iv.setPreserveRatio(true);
 
-
         HBox post = new HBox(post1iv);
         post.setAlignment(Pos.CENTER);
 
-        VBox home = new VBox(topMenu, post);
+        //like bar
+        Button like = new Button("<3");
+        Button comment = new Button("<()");
+        Button send = new Button(">");
+        Button save = new Button("[]");
+
+        HBox likeBtns = new HBox(like, comment, send);
+        HBox likeBar = new HBox(275, likeBtns, save);
+
+
+        GridPane feed = new GridPane();
+
+        feed.add(topMenu, 0, 0);
+        feed.add(postOpt, 0, 1);
+        feed.add(post, 0, 2);
+        feed.add(likeBar, 0, 3);
+
 
 
 
         //for setting scene
-        Scene scene = new Scene(home);
+        Scene scene = new Scene(feed);
         scene.getStylesheets().add("style.css");
         scene.getStylesheets().add("label.css");
 
