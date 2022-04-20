@@ -35,6 +35,7 @@ public class Prototype extends Application{
         //scene
         //for top right
         Label insta = new Label("Instagram");
+        
         //to be changed, just for set up rn
         Button create = new Button("+");
         Button activity = new Button("<3");
@@ -116,7 +117,8 @@ public class Prototype extends Application{
         //for setting scene
         Scene scene = new Scene(homeScreen);
         scene.getStylesheets().add("style.css");
-        scene.getStylesheets().add("label.css");
+        scene.getStylesheets().add("labels.css");
+        insta.getStyleClass().add("insta");
 
         //showing scene
         primary.setScene(scene);
