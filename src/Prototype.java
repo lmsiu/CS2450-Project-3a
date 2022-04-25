@@ -12,12 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
-public class Prototype extends Application{
+public class Prototype extends Application {
     public static void main(String[] args) throws Exception {
         launch(args);
     }
 
-    //bottom bar
+    // bottom bar
     Button home = new Button("[^]");
     Button explore = new Button("-o");
     Button reels = new Button("[>]");
@@ -26,71 +26,65 @@ public class Prototype extends Application{
 
     HBox bottom = new HBox(50, home, explore, reels, shop, profile);
 
-    
-
-
     @Override
     public void start(Stage primary) throws Exception {
-        
-        //scene
-        //for top right
+
+        // scene
+        // for top right
         Label insta = new Label("Instagram");
-        
-        //to be changed, just for set up rn
+
+        // to be changed, just for set up rn
         Button create = new Button("+");
         Button activity = new Button("<3");
         Button dms = new Button(">");
 
-        //Post
-        //poster info
+        // Post
+        // poster info
         Image profilePic = new Image("billyProfilePic.jpg");
         ImageView profilePiciv = new ImageView(profilePic);
         Label poster = new Label("billy.cpp");
         Button postOptions = new Button("...");
 
-        //image
+        // image
         Image post1 = new Image("billy.jpg");
         Image post2 = new Image("billythebronco.jpg");
 
         ImageView post1iv = new ImageView(post1);
         ImageView post2iv = new ImageView(post2);
 
-        //like bar
+        // like bar
         Button like = new Button("<3");
         Button comment = new Button("<()");
         Button send = new Button(">");
         Button save = new Button("[]");
 
-        
-        //scene2 activity
+        // scene2 activity
         activity.setOnAction(event -> {
             Label hi = new Label("scene2");
 
-            //setting a new page
+            // setting a new page
             Scene scene2 = new Scene(hi);
 
             primary.setScene(scene2);
         });
 
-        
+        // scene4 reels
+        // scene5 reel full
 
-        //scene4 reels
-        //scene5 reel full
+        // scene
 
-        //scene
-    
-        //set poster info
+        // set poster info
         profilePiciv.setFitWidth(50);
         profilePiciv.setFitHeight(50);
         profilePiciv.setPreserveRatio(true);
 
-        //set padding
+        // set padding
         post1iv.setFitWidth(350);
         post1iv.setFitHeight(350);
         post1iv.setPreserveRatio(true);
 
         HBox topButtons = new HBox(10, create, activity, dms);
-    //need to set paddings
+        // need to set paddings
         HBox topMenu = new HBox(215, insta, topButtons);
 
         HBox posterInfo = new HBox(10, profilePiciv, poster);
@@ -104,7 +98,6 @@ public class Prototype extends Application{
 
         GridPane feed = new GridPane();
 
-        
         bottom.setAlignment(Pos.BOTTOM_CENTER);
 
         feed.add(topMenu, 0, 0);
@@ -114,40 +107,39 @@ public class Prototype extends Application{
 
         VBox homeScreen = new VBox(175, feed, bottom);
 
-        //for setting scene
+        // for setting scene
         Scene scene = new Scene(homeScreen);
         scene.getStylesheets().add("style.css");
         scene.getStylesheets().add("labels.css");
         insta.getStyleClass().add("insta");
 
-        //showing scene
+        // showing scene
         primary.setScene(scene);
 
-        //scene3 profile
-        profile.setOnAction(event ->{
+        // scene3 profile
+        profile.setOnAction(event -> {
             Scene scene3 = setSecene3(primary, scene);
 
             primary.setScene(scene3);
         });
 
-        //making the size
+        // making the size
         primary.setHeight(700);
         primary.setWidth(400);
 
-        //show scene
+        // show scene
         primary.setTitle("Instagram Prototype");
         primary.show();
 
-        
     }
 
-    private Scene setSecene3(Stage primary, Scene homeScene){
+    private Scene setSecene3(Stage primary, Scene homeScene) {
         Image addPeopleIcon = new Image("addPeople.png");
         ImageView addIcon = new ImageView(addPeopleIcon);
 
         Image profilePic = new Image("billyProfilePic.jpg");
         ImageView profilePiciv = new ImageView(profilePic);
-        
+
         Button postCount = new Button("45");
         Button followerCount = new Button("32");
         Button followingCount = new Button("33");
@@ -172,7 +164,7 @@ public class Prototype extends Application{
 
         HBox followersandadd = new HBox(followers, addFollowers);
 
-        GridPane profile =  new GridPane();
+        GridPane profile = new GridPane();
         profile.setHgap(20);
         profile.setVgap(10);
         profile.add(postCount, 0, 0);
@@ -189,7 +181,7 @@ public class Prototype extends Application{
 
         VBox profileWholePage = new VBox(400, profilePage, bottom);
 
-        home.setOnAction(event ->{
+        home.setOnAction(event -> {
             primary.setScene(homeScene);
         });
 
