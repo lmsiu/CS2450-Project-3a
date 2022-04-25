@@ -136,6 +136,12 @@ public class Prototype extends Application {
     private Scene setSecene3(Stage primary, Scene homeScene) {
         Image addPeopleIcon = new Image("addPeople.png");
         ImageView addIcon = new ImageView(addPeopleIcon);
+        Image recommendedFollowers = new Image("recomended.png");
+        ImageView recFollowers = new ImageView();
+
+        recFollowers.setFitWidth(400);
+        recFollowers.setFitHeight(250);
+        recFollowers.setPreserveRatio(true);
 
         Image profilePic = new Image("billyProfilePic.jpg");
         ImageView profilePiciv = new ImageView(profilePic);
@@ -177,11 +183,15 @@ public class Prototype extends Application {
         HBox profileTop = new HBox(50, profilePiciv, profile);
         profileTop.setAlignment(Pos.TOP_LEFT);
 
-        VBox profilePage = new VBox(10, profileTop, name, bio, editProfile);
+        VBox profilePage = new VBox(10, profileTop, recFollowers, name, bio, editProfile);
 
         VBox profileWholePage = new VBox(400, profilePage, bottom);
 
-        home.setOnAction(event -> {
+        addFollowers.setOnAction(event ->{
+            recFollowers.setImage(recommendedFollowers);
+        });
+
+        home.setOnAction(event ->{
             primary.setScene(homeScene);
         });
 
