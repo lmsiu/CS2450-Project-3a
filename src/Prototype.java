@@ -21,6 +21,7 @@ public class Prototype extends Application{
     Button home = new Button("[^]");
     Button explore = new Button("-o");
     Button reels = new Button("[>]");
+    Button create = new Button();
     Button shop = new Button("$$");
     Button profile = new Button(">‿<");
 
@@ -37,10 +38,23 @@ public class Prototype extends Application{
         Label insta = new Label("Instagram");
         
         //to be changed, just for set up rn
-        Button create = new Button("+");
         Button activity = new Button("<3");
         Button dms = new Button(">");
 
+        // Reels Icon
+        Image reelsIcon = new Image("reelsIcon.png");
+        ImageView reelsView = new ImageView(reelsIcon);
+        reelsView.setFitHeight(20);
+        reelsView.setPreserveRatio(true);
+        reels.setGraphic(reelsView);
+        
+        // Create Icon
+        Image createIcon = new Image("postIcon.png");
+        ImageView createView = new ImageView(createIcon);
+        createView.setFitHeight(20);
+        createView.setPreserveRatio(true);
+        create.setGraphic(createView);
+        
         //Post
         //poster info
         Image profilePic = new Image("billyProfilePic.jpg");
@@ -89,8 +103,8 @@ public class Prototype extends Application{
         post1iv.setFitHeight(350);
         post1iv.setPreserveRatio(true);
 
-        HBox topButtons = new HBox(10, create, activity, dms);
-    //need to set paddings
+        HBox topButtons = new HBox(10, reels/*create*/, activity, dms);
+        //need to set paddings
         HBox topMenu = new HBox(215, insta, topButtons);
 
         HBox posterInfo = new HBox(10, profilePiciv, poster);
@@ -130,6 +144,20 @@ public class Prototype extends Application{
             primary.setScene(scene3);
         });
 
+        //scene4 reels
+        reels.setOnAction(event -> {
+            Scene scene4 = setScene4(primary, scene);
+
+            primary.setScene(scene4);
+        });
+
+        //scene5 post camera
+        create.setOnAction(event -> {
+            Scene scene5 = setScene5(primary, scene);
+
+            primary.setScene(scene5);
+        });
+        
         //making the size
         primary.setHeight(700);
         primary.setWidth(400);
@@ -141,7 +169,43 @@ public class Prototype extends Application{
         
     }
 
-    private Scene setSecene3(Stage primary, Scene homeScene){
+    private Scene setScene5(Stage primary, Scene homeScene)
+    {
+        Image fakeCamera = new Image("fakeCamera.jpg");
+        ImageView camera = new ImageView(fakeCamera);
+        camera.setFitHeight(600);
+        camera.setFitWidth(385);
+
+        VBox cameraPage = new VBox(15, camera, bottom);
+        Scene scene5 = new Scene(cameraPage);
+
+        home.setOnAction(event ->{
+            primary.setScene(homeScene);
+        });
+
+        return scene5;
+
+    }
+
+    private Scene setScene4(Stage primary, Scene homeScene)
+    {
+        Image fakeReel = new Image("fakeReel.jpg");
+        ImageView reel = new ImageView(fakeReel);
+        reel.setFitHeight(600);
+        reel.setFitWidth(400);
+
+        VBox reelsWholePage = new VBox(15, reel, bottom);
+        Scene scene4 = new Scene(reelsWholePage);
+
+        home.setOnAction(event ->{
+            primary.setScene(homeScene);
+        });
+
+        return scene4;
+    }
+    
+    private Scene setSecene3(Stage primary, Scene homeScene)
+    {
         Image addPeopleIcon = new Image("addPeople.png");
         ImageView addIcon = new ImageView(addPeopleIcon);
         Image recommendedFollowers = new Image("recomended.png");
